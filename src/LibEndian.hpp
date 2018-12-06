@@ -22,37 +22,42 @@
 //					DECLARATION
 // ─────────────────────────────────────────────────────────────
 
-/** \def #LIBENDIAN_API_ Class decorator to handle dynamic linkage in windows */
-/** \def #LIBENDIAN_USE_NAMESPACE Set by build system. Define if a namespace should be used */
-/** \def #LIBENDIAN_NAMESPACE_NAME Name of then namespace. By default Endn. Using this macro give the same result no matters if the library is compiled with or without a namespace */
-/** \def #LIBENDIAN_NAMESPACE_START Start of the namespace declaratio. Using this macro give the same result no matters if the library is compiled with or without a namespace */
-/** \def #LIBENDIAN_NAMESPACE_END End of the namespace declaration. Using this macro give the same result no matters if the library is compiled with or without a namespace */
-/** \def #LIBENDIAN_USING_NAMESPACE Use the namespace. Using this macro give the same result no matters if the library is compiled with or without a namespace */
-
 #ifdef WIN32
 	#ifdef LIBENDIAN_SHARED	
-		#define LIBENDIAN_API_ __declspec(dllexport) /** Shared build, decorate for export */
+/** Class decorator to handle dynamic linkage in windows */
+		#define LIBENDIAN_API_ __declspec(dllexport)
 	#elif LIBENDIAN_STATIC 	
-		#define LIBENDIAN_API_                       /** No decoration when building staticlly */
-	#else 				
-		#define LIBENDIAN_API_ __declspec(dllimport) /** Link to lib , decorate for import */
+/** Class decorator to handle dynamic linkage in windows */
+		#define LIBENDIAN_API_
+	#else 		
+/** Class decorator to handle dynamic linkage in windows */
+		#define LIBENDIAN_API_ __declspec(dllimport)
 	#endif
 #else
-	#define LIBENDIAN_API_                           /** Decoration is only required on windows */
+/** Class decorator to handle dynamic linkage in windows */
+	#define LIBENDIAN_API_
 #endif
 
+/** Set by build system. Define if a namespace should be used */
 #ifdef LIBENDIAN_USE_NAMESPACE
 #ifndef LIBENDIAN_NAMESPACE_NAME
+/** Name of then namespace. By default Endn. Using this macro give the same result no matters if the library is compiled with or without a namespace */
 #define LIBENDIAN_NAMESPACE_NAME Endn
 #endif
+/** Start of the namespace declaratio. Using this macro give the same result no matters if the library is compiled with or without a namespace */
 #define LIBENDIAN_NAMESPACE_START namespace LIBENDIAN_NAMESPACE {
+/** End of the namespace declaration. Using this macro give the same result no matters if the library is compiled with or without a namespace */
 #define LIBENDIAN_NAMESPACE_END }
+/** Use the namespace. Using this macro give the same result no matters if the library is compiled with or without a namespace */
 #define LIBENDIAN_USING_NAMESPACE using namespace LIBENDIAN_NAMESPACE;
 #else
 #undef LIBENDIAN_NAMESPACE_NAME
 #define LIBENDIAN_NAMESPACE_NAME
+/** Start of the namespace declaratio. Using this macro give the same result no matters if the library is compiled with or without a namespace */
 #define LIBENDIAN_NAMESPACE_START
+/** End of the namespace declaration. Using this macro give the same result no matters if the library is compiled with or without a namespace */
 #define LIBENDIAN_NAMESPACE_END
+/** Use the namespace. Using this macro give the same result no matters if the library is compiled with or without a namespace */
 #define LIBENDIAN_USING_NAMESPACE
 #endif
 
