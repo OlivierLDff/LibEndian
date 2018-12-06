@@ -280,21 +280,34 @@ public:
 	 * \param buf Pointer to the buffer
 	 * \param val Value to serialize
 	 */
-	static void SET_UINT8(uint8_t* buf, const uint8_t val);
+	static void SET_UINT8(uint8_t* buf, const uint8_t val)
+	{
+		buf[0] = (uint8_t)(val & 0xFF);
+	}
 
 	/** 
 	 * Serialize a uint16_t in the buffer
 	 * \param buf Pointer to the buffer
 	 * \param val Value to serialize
 	 */
-	static void SET_UINT16(uint8_t* buf, const uint16_t val);
+	static void SET_UINT16(uint8_t* buf, const uint16_t val)
+	{
+		buf[0] = (uint8_t)((val >> 8) & 0xFF);
+		buf[1] = (uint8_t)(val & 0xFF);
+	}
 
 	/** 
 	 * Serialize a uint32_t in the buffer
 	 * \param buf Pointer to the buffer
 	 * \param val Value to serialize
 	 */
-	static void SET_UINT32(uint8_t* buf, const uint32_t val);
+	static void SET_UINT32(uint8_t* buf, const uint32_t val)
+	{
+		buf[0] = (uint8_t)((val >> 24) & 0xFF);
+		buf[1] = (uint8_t)((val >> 16) & 0xFF);
+		buf[2] = (uint8_t)((val >> 8) & 0xFF);
+		buf[3] = (uint8_t)(val & 0xFF);
+	}
 
 	/** 
 	 * Serialize a uint48_t in the buffer
@@ -302,35 +315,54 @@ public:
 	 * \param val Value to serialize
 	 * \note For conveniance the uint48 is stored into a uint64_t
 	 */
-	static void SET_UINT48(uint8_t* buf, const uint64_t val);
+	static void SET_UINT48(uint8_t* buf, const uint64_t val)
+	{
+		buf[0] = (uint8_t)((val >> 40) & 0xFF);
+		buf[1] = (uint8_t)((val >> 32) & 0xFF);
+		buf[2] = (uint8_t)((val >> 24) & 0xFF);
+		buf[3] = (uint8_t)((val >> 16) & 0xFF);
+		buf[4] = (uint8_t)((val >> 8) & 0xFF);
+		buf[5] = (uint8_t)(val & 0xFF);
+	}
 
 	/** 
 	 * Serialize a uint64_t in the buffer
 	 * \param buf Pointer to the buffer
 	 * \param val Value to serialize
 	 */
-	static void SET_UINT64(uint8_t* buf, const uint64_t val);
+	static void SET_UINT64(uint8_t* buf, const uint64_t val)
+	{
+		buf[0] = (uint8_t)((val >> 56) & 0xFF);
+		buf[1] = (uint8_t)((val >> 48) & 0xFF);
+		buf[2] = (uint8_t)((val >> 40) & 0xFF);
+		buf[3] = (uint8_t)((val >> 32) & 0xFF);
+		buf[4] = (uint8_t)((val >> 24) & 0xFF);
+		buf[5] = (uint8_t)((val >> 16) & 0xFF);
+		buf[6] = (uint8_t)((val >> 8) & 0xFF);
+		buf[7] = (uint8_t)(val & 0xFF);
+	}
+
 
 	/** 
 	 * Serialize a int8_t in the buffer
 	 * \param buf Pointer to the buffer
 	 * \param val Value to serialize
 	 */
-	static void SET_INT8(uint8_t* buf, const int8_t val);
+	static void SET_INT8(uint8_t* buf, const int8_t val) { SET_UINT8(buf, *(const uint8_t*)&val); }
 
 	/** 
 	 * Serialize a int16_t in the buffer
 	 * \param buf Pointer to the buffer
 	 * \param val Value to serialize
 	 */
-	static void SET_INT16(uint8_t* buf, const int16_t val);
+	static void SET_INT16(uint8_t* buf, const int16_t val) { SET_UINT16(buf, *(const uint16_t*)&val); }
 
 	/** 
 	 * Serialize a int32_t in the buffer
 	 * \param buf Pointer to the buffer
 	 * \param val Value to serialize
 	 */
-	static void SET_INT32(uint8_t* buf, const int32_t val);
+	static void SET_INT32(uint8_t* buf, const int32_t val) { SET_UINT32(buf, *(const uint32_t*)&val); }
 
 	/** 
 	 * Serialize a int48 in the buffer
@@ -338,28 +370,28 @@ public:
 	 * \param val Value to serialize
 	 * \note For conveniance the int48 is stored into a int64_t
 	 */
-	static void SET_INT48(uint8_t* buf, const int64_t val);
+	static void SET_INT48(uint8_t* buf, const int64_t val) { SET_UINT48(buf, *(const uint64_t*)&val); }
 
 	/** 
 	 * Serialize a int64_t in the buffer
 	 * \param buf Pointer to the buffer
 	 * \param val Value to serialize
 	 */
-	static void SET_INT64(uint8_t* buf, const int64_t val);
+	static void SET_INT64(uint8_t* buf, const int64_t val) { SET_UINT64(buf, *(const uint64_t*)&val); }
 
 	/** 
 	 * Serialize a float in the buffer
 	 * \param buf Pointer to the buffer
 	 * \param val Value to serialize
 	 */
-	static void SET_FLOAT32(uint8_t* buf, const float val);
+	static void SET_FLOAT32(uint8_t* buf, const float val) { SET_UINT32(buf, *(const uint32_t*)&val); }
 
 	/** 
 	 * Serialize a double in the buffer
 	 * \param buf Pointer to the buffer
 	 * \param val Value to serialize
 	 */
-	static void SET_FLOAT64(uint8_t* buf, const double val);
+	static void SET_FLOAT64(uint8_t* buf, const double val) { SET_UINT64(buf, *(const uint64_t*)&val); }
 
 	/** 
 	 * Serialize a uint8_t in the buffer
@@ -786,21 +818,21 @@ public:
 	 * \param buf Pointer to the buffer
 	 * \param val Value to serialize
 	 */
-	static void SET_UINT8(char* buf, const uint8_t val);
+	static void SET_UINT8(char* buf, const uint8_t val) { SET_UINT8((uint8_t*)buf, *(const uint8_t*)&val); }
 
 	/** 
 	 * Serialize a uint16_t in the buffer
 	 * \param buf Pointer to the buffer
 	 * \param val Value to serialize
 	 */
-	static void SET_UINT16(char* buf, const uint16_t val);
+	static void SET_UINT16(char* buf, const uint16_t val) { SET_UINT16((uint8_t*)buf, *(const uint16_t*)&val); }
 
 	/** 
 	 * Serialize a uint32_t in the buffer
 	 * \param buf Pointer to the buffer
 	 * \param val Value to serialize
 	 */
-	static void SET_UINT32(char* buf, const uint32_t val);
+	static void SET_UINT32(char* buf, const uint32_t val) { SET_UINT32((uint8_t*)buf, *(const uint32_t*)&val); }
 
 	/** 
 	 * Serialize a uint48_t in the buffer
@@ -808,35 +840,35 @@ public:
 	 * \param val Value to serialize
 	 * \note For conveniance the uint48 is stored into a uint64_t
 	 */
-	static void SET_UINT48(char* buf, const uint64_t val);
+	static void SET_UINT48(char* buf, const uint64_t val) { SET_UINT48((uint8_t*)buf, *(const uint64_t*)&val); }
 
 	/** 
 	 * Serialize a uint64_t in the buffer
 	 * \param buf Pointer to the buffer
 	 * \param val Value to serialize
 	 */
-	static void SET_UINT64(char* buf, const uint64_t val);
+	static void SET_UINT64(char* buf, const uint64_t val) { SET_UINT64((uint8_t*)buf, *(const uint64_t*)&val); }
 
 	/** 
 	 * Serialize a int8_t in the buffer
 	 * \param buf Pointer to the buffer
 	 * \param val Value to serialize
 	 */
-	static void SET_INT8(char* buf, const int8_t val);
+	static void SET_INT8(char* buf, const int8_t val) { SET_UINT8(buf, *(const uint8_t*)&val); }
 
 	/** 
 	 * Serialize a int16_t in the buffer
 	 * \param buf Pointer to the buffer
 	 * \param val Value to serialize
 	 */
-	static void SET_INT16(char* buf, const int16_t val);
+	static void SET_INT16(char* buf, const int16_t val) { SET_UINT16(buf, *(const uint16_t*)&val); }
 
 	/** 
 	 * Serialize a int32_t in the buffer
 	 * \param buf Pointer to the buffer
 	 * \param val Value to serialize
 	 */
-	static void SET_INT32(char* buf, const int32_t val);
+	static void SET_INT32(char* buf, const int32_t val) { SET_UINT32(buf, *(const uint32_t*)&val); }
 
 	/** 
 	 * Serialize a int48 in the buffer
@@ -844,28 +876,28 @@ public:
 	 * \param val Value to serialize
 	 * \note For conveniance the int48 is stored into a int64_t
 	 */
-	static void SET_INT48(char* buf, const int64_t val);
+	static void SET_INT48(char* buf, const int64_t val) { SET_UINT48(buf, *(const uint64_t*)&val); }
 
 	/** 
 	 * Serialize a int64_t in the buffer
 	 * \param buf Pointer to the buffer
 	 * \param val Value to serialize
 	 */
-	static void SET_INT64(char* buf, const int64_t val);
+	static void SET_INT64(char* buf, const int64_t val) { SET_UINT64(buf, *(const uint64_t*)&val); }
 
 	/** 
 	 * Serialize a float in the buffer
 	 * \param buf Pointer to the buffer
 	 * \param val Value to serialize
 	 */
-	static void SET_FLOAT32(char* buf, const float val);
+	static void SET_FLOAT32(char* buf, const float val) { SET_UINT32(buf, *(const uint32_t*)&val); }
 
 	/** 
 	 * Serialize a double in the buffer
 	 * \param buf Pointer to the buffer
 	 * \param val Value to serialize
 	 */
-	static void SET_FLOAT64(char* buf, const double val);
+	static void SET_FLOAT64(char* buf, const double val) { SET_UINT64(buf, *(const uint64_t*)&val); }
 
 	/** 
 	 * Serialize a uint8_t in the buffer

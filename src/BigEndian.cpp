@@ -11,7 +11,7 @@
 // Dependancies Header
 
 // Application Header
-#include <LittleEndian.hpp>
+#include <BigEndian.hpp>
 
 // ─────────────────────────────────────────────────────────────
 //					DECLARATION

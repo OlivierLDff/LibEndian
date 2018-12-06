@@ -22,6 +22,13 @@
 //					DECLARATION
 // ─────────────────────────────────────────────────────────────
 
+/** \def #LIBENDIAN_API_ Class decorator to handle dynamic linkage in windows */
+/** \def #LIBENDIAN_USE_NAMESPACE Set by build system. Define if a namespace should be used */
+/** \def #LIBENDIAN_NAMESPACE_NAME Name of then namespace. By default Endn. Using this macro give the same result no matters if the library is compiled with or without a namespace */
+/** \def #LIBENDIAN_NAMESPACE_START Start of the namespace declaratio. Using this macro give the same result no matters if the library is compiled with or without a namespace */
+/** \def #LIBENDIAN_NAMESPACE_END End of the namespace declaration. Using this macro give the same result no matters if the library is compiled with or without a namespace */
+/** \def #LIBENDIAN_USING_NAMESPACE Use the namespace. Using this macro give the same result no matters if the library is compiled with or without a namespace */
+
 #ifdef WIN32
 	#ifdef LIBENDIAN_SHARED	
 		#define LIBENDIAN_API_ __declspec(dllexport) /** Shared build, decorate for export */
@@ -55,7 +62,7 @@ LIBENDIAN_NAMESPACE_START
 //					CLASS
 // ─────────────────────────────────────────────────────────────
 
-/** Define common size */
+/** Define common variable size */
 class LIBENDIAN_API_ LibEndian
 {
 	// ────── SIZE ──────────────────────────────────────────────────────
