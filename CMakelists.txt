@@ -78,7 +78,7 @@ SET( LIBENDIAN_VERSION_TAG_HEX 0x${LIBENDIAN_VERSION_TAG})
 # │						  STATUS 	 								 │
 # └──────────────────────────────────────────────────────────────────┘
 
-MESSAGE( STATUS  "------ ${LIBENDIAN_TARGET} Configuration ------" )
+MESSAGE( STATUS  "------ ${LIBENDIAN_TARGET} Configuration ${LIBENDIAN_VERSION} ------" )
 
 MESSAGE( STATUS "LIBENDIAN_TARGET                 : ${LIBENDIAN_TARGET}" )
 MESSAGE( STATUS "LIBENDIAN_PROJECT                : ${LIBENDIAN_PROJECT}" )
