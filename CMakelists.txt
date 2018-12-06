@@ -12,7 +12,7 @@
 #	- LIBENDIAN_NAMESPACE : Namespace for the library. Only relevant if LIBENDIAN_USE_NAMESPACE is ON. Default: "Endn".
 #	- LIBENDIAN_BUILD_DOC : Build the LibEndian Doc [ON OFF]. Default: OFF.
 #	- LIBENDIAN_DOXYGEN_BT_REPOSITORY : Repository of DoxygenBt. Default : "https://github.com/OlivierLDff/DoxygenBootstrapped.git"
-#	- LIBENDIAN_DOXYGEN_BT_TAG : Git Tag of DoxygenBt. Default : "v1.3.0"
+#	- LIBENDIAN_DOXYGEN_BT_TAG : Git Tag of DoxygenBt. Default : "v1.3.1"
 
 #
 ## CMAKE OUTPUT
@@ -47,7 +47,7 @@ SET( LIBENDIAN_USE_NAMESPACE OFF CACHE BOOL "If the library compile with a names
 SET( LIBENDIAN_NAMESPACE "Endn" CACHE STRING "Namespace for the library. Only relevant if LIBENDIAN_USE_NAMESPACE is ON")
 SET( LIBENDIAN_BUILD_DOC OFF CACHE BOOL "Build LibEndian Doc with Doxygen" )
 SET( LIBENDIAN_DOXYGEN_BT_REPOSITORY "https://github.com/OlivierLDff/DoxygenBootstrappedCMake.git" CACHE STRING "Repository of DoxygenBt" )
-SET( LIBENDIAN_DOXYGEN_BT_TAG v1.3.0 CACHE STRING "Git Tag of DoxygenBt" )
+SET( LIBENDIAN_DOXYGEN_BT_TAG v1.3.1 CACHE STRING "Git Tag of DoxygenBt" )
 
 PROJECT( ${LIBENDIAN_PROJECT} C CXX )
 SET_PROPERTY(GLOBAL PROPERTY USE_FOLDERS ON)

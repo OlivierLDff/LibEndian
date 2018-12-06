@@ -6,7 +6,7 @@ A cross platform C++ library to get rid with of binary serialization issues. Thi
 ## Dependencies
 
 * [Doxygen](https://github.com/doxygen/doxygen) : To generate the documentation
-* [DoxygenBootstrapped](https://github.com/OlivierLDff/DoxygenBootstrapped) : Integrate doxygen with CMake. *v1.3.0*.
+* [DoxygenBootstrapped](https://github.com/OlivierLDff/DoxygenBootstrapped) : Integrate doxygen with CMake. *v1.3.1*.
 
 ## Supported Types
 
