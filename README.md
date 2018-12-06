@@ -3,6 +3,11 @@ LibEndian
 
 A cross platform C++ library to get rid with of binary serialization issues. This library can serialize in buffer the most common types.
 
+## Dependencies
+
+* [Doxygen](https://github.com/doxygen/doxygen) : To generate the documentation
+* [DoxygenBootstrapped](https://github.com/OlivierLDff/DoxygenBootstrapped) : Integrate doxygen with CMake. *v1.3.0*.
+
 ## Supported Types
 
 All the types are from `stdint.h`.
@@ -25,6 +30,13 @@ All the types are from `stdint.h`.
 ## Build with CMake
 
 The CMake can build the library either as a static or a shared library. It can also generate a doxygen website.
+
+```
+git clone https://github.com/OlivierLDff/LibEndian
+cd LibEndian && mkdir build && cd build
+cmake -DLIBENDIAN_USE_NAMESPACE=ON -DLIBENDIAN_BUILD_DOC=ON ..
+make -j16
+```
 
 ### Input
 
