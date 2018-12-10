@@ -6,7 +6,7 @@ A cross platform C++ library to get rid with of binary serialization issues. Thi
 ## Dependencies
 
 * [Doxygen](https://github.com/doxygen/doxygen) : To generate the documentation.
-* [DoxygenBootstrapped](https://github.com/OlivierLDff/DoxygenBootstrapped) : Integrate doxygen with CMake. *v1.3.1*.
+* [DoxygenBootstrapped](https://github.com/OlivierLDff/DoxygenBootstrapped) : Integrate doxygen with CMake. *v1.3.2*.
 
 ## Supported Types
 
@@ -51,7 +51,7 @@ make -j16
 ### Dependencies
 
 - **LIBENDIAN_DOXYGEN_BT_REPOSITORY** : Repository of DoxygenBt. *Default : "https://github.com/OlivierLDff/DoxygenBootstrapped.git"*
-- **LIBENDIAN_DOXYGEN_BT_TAG** : Git Tag of DoxygenBt. *Default : "v1.3.0"*
+- **LIBENDIAN_DOXYGEN_BT_TAG** : Git Tag of DoxygenBt. *Default : "v1.3.2"*
 
 ### Output
 
@@ -85,10 +85,12 @@ SET( LIBENDIAN_BUILD_STATIC ON )
 SET( LIBENDIAN_BUILD_DOC OFF )
 SET( LIBENDIAN_USE_NAMESPACE ON )
 SET( LIBENDIAN_REPOSITORY "https://github.com/OlivierLDff/LibEndian.git" )
-SET( LIBENDIAN_TAG v1.0.0 )
+SET( LIBENDIAN_TAG v1.0.2 )
 INCLUDE(path/to/BuildLibEndian.cmake)
 ```
 
 ## Revisions
 
 * **1.0.0** : Initial work
+	* **1.0.1** : Fix CMakeLists status
+	* **1.0.2** : Fix CMakeLists file name

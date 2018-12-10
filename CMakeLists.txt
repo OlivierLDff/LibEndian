@@ -24,6 +24,7 @@
 #
 ## VERSION
 #	- 1.0.0 : 06/12/2018 : Initial Work
+#	- 1.0.2 : 10/12/2018 : Fix filename
 
 # ┌──────────────────────────────────────────────────────────────────┐
 # │						  CMAKE PROPERTIES							 │
@@ -47,7 +48,7 @@ SET( LIBENDIAN_USE_NAMESPACE OFF CACHE BOOL "If the library compile with a names
 SET( LIBENDIAN_NAMESPACE "Endn" CACHE STRING "Namespace for the library. Only relevant if LIBENDIAN_USE_NAMESPACE is ON")
 SET( LIBENDIAN_BUILD_DOC OFF CACHE BOOL "Build LibEndian Doc with Doxygen" )
 SET( LIBENDIAN_DOXYGEN_BT_REPOSITORY "https://github.com/OlivierLDff/DoxygenBootstrappedCMake.git" CACHE STRING "Repository of DoxygenBt" )
-SET( LIBENDIAN_DOXYGEN_BT_TAG v1.3.1 CACHE STRING "Git Tag of DoxygenBt" )
+SET( LIBENDIAN_DOXYGEN_BT_TAG v1.3.2 CACHE STRING "Git Tag of DoxygenBt" )
 
 PROJECT( ${LIBENDIAN_PROJECT} C CXX )
 SET_PROPERTY(GLOBAL PROPERTY USE_FOLDERS ON)
@@ -59,7 +60,7 @@ SET_PROPERTY(GLOBAL PROPERTY USE_FOLDERS ON)
 # Project version must be set here
 SET(LIBENDIAN_VERSION_MAJOR 1)
 SET(LIBENDIAN_VERSION_MINOR 0)
-SET(LIBENDIAN_VERSION_PATCH 1)
+SET(LIBENDIAN_VERSION_PATCH 2)
 SET(LIBENDIAN_VERSION ${LIBENDIAN_VERSION_MAJOR}.${LIBENDIAN_VERSION_MINOR}.${LIBENDIAN_VERSION_PATCH} CACHE STRING "LibEndian Version")
 
 IF( EXISTS "${CMAKE_SOURCE_DIR}/.git" )
