@@ -40,9 +40,9 @@
 
 /** Set by build system. Define if a namespace should be used */
 #ifdef LIBENDIAN_USE_NAMESPACE
-#ifndef LIBENDIAN_NAMESPACE_NAME
+#ifndef LIBENDIAN_NAMESPACE
 /** Name of then namespace. By default Endn. Using this macro give the same result no matters if the library is compiled with or without a namespace */
-#define LIBENDIAN_NAMESPACE_NAME Endn
+#define LIBENDIAN_NAMESPACE Endn
 #endif
 /** Start of the namespace declaratio. Using this macro give the same result no matters if the library is compiled with or without a namespace */
 #define LIBENDIAN_NAMESPACE_START namespace LIBENDIAN_NAMESPACE {
@@ -51,8 +51,8 @@
 /** Use the namespace. Using this macro give the same result no matters if the library is compiled with or without a namespace */
 #define LIBENDIAN_USING_NAMESPACE using namespace LIBENDIAN_NAMESPACE;
 #else
-#undef LIBENDIAN_NAMESPACE_NAME
-#define LIBENDIAN_NAMESPACE_NAME
+#undef LIBENDIAN_NAMESPACE
+#define LIBENDIAN_NAMESPACE
 /** Start of the namespace declaratio. Using this macro give the same result no matters if the library is compiled with or without a namespace */
 #define LIBENDIAN_NAMESPACE_START
 /** End of the namespace declaration. Using this macro give the same result no matters if the library is compiled with or without a namespace */
