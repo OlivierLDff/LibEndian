@@ -111,9 +111,9 @@ SET( LIBENDIAN_SRCS
 	# Main
 	${CMAKE_CURRENT_SOURCE_DIR}/src/LibEndian.hpp
 	${CMAKE_CURRENT_SOURCE_DIR}/src/LittleEndian.hpp
-	${CMAKE_CURRENT_SOURCE_DIR}/src/LittleEndian.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/src/BigEndian.hpp
-	${CMAKE_CURRENT_SOURCE_DIR}/src/BigEndian.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/src/LittleEndian
+	${CMAKE_CURRENT_SOURCE_DIR}/src/BigEndian
 	)
 
 # ┌──────────────────────────────────────────────────────────────────┐
