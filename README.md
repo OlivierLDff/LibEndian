@@ -44,7 +44,7 @@ make -j16
 - **LIBENDIAN_PROJECT** : Name of the project. *Default : "LibEndian"*
 - **LIBENDIAN_BUILD_SHARED** : Build shared library [ON OFF]. *Default: OFF.*
 - **LIBENDIAN_BUILD_STATIC** : Build static library [ON OFF]. *Default: ON.*
-- **LIBENDIAN_USE_NAMESPACE** : If the library compile with a namespace [ON OFF]. *Default: OFF.*
+- **LIBENDIAN_USE_NAMESPACE** : If the library compile with a namespace [ON OFF]. *Default: ON.*
 - **LIBENDIAN_NAMESPACE** : Namespace for the library. Only relevant if LIBENDIAN_USE_NAMESPACE is ON. *Default: "Endn".*
 - **LIBENDIAN_BUILD_DOC** : Build the LibEndian Doc [ON OFF]. *Default: OFF.*
 
