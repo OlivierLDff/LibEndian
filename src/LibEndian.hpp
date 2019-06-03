@@ -100,6 +100,20 @@ public:
 	static const uint8_t FLOAT64_SIZE = 8;
 };
 
+/** Get the version of the library */
+class LIBENDIAN_API_ Version
+{
+public:
+    /** Library Major Version */
+    static uint32_t getMajor();
+    /** Library Minor Version */
+    static uint32_t getMinor();
+    /** Library Patch Version */
+    static uint32_t getPatch();
+    /** Library Tag Version */
+    static uint32_t getTag();
+};
+
 LIBENDIAN_NAMESPACE_END
 
 #endif
