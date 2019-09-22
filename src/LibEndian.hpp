@@ -1,4 +1,4 @@
-/** 
+/**
  * \file LibEndian.hpp
  * \brief Common define for the library
  */
@@ -6,7 +6,7 @@
 #define __LIB_ENDIAN_HPP__
 
 // ─────────────────────────────────────────────────────────────
-//					INCLUDE
+//                  INCLUDE
 // ─────────────────────────────────────────────────────────────
 
 // C Header
@@ -14,28 +14,28 @@
 
 // C++ Header
 
-// Dependancies Header
+// Dependencies Header
 
 // Application Header
 
 // ─────────────────────────────────────────────────────────────
-//					DECLARATION
+//                  DECLARATION
 // ─────────────────────────────────────────────────────────────
 
 #ifdef WIN32
-	#ifdef LIBENDIAN_SHARED	
+    #ifdef LIBENDIAN_SHARED
 /** Class decorator to handle dynamic linkage in windows */
-		#define LIBENDIAN_API_ __declspec(dllexport)
-	#elif LIBENDIAN_STATIC 	
+        #define LIBENDIAN_API_ __declspec(dllexport)
+    #elif LIBENDIAN_STATIC
 /** Class decorator to handle dynamic linkage in windows */
-		#define LIBENDIAN_API_
-	#else 		
+        #define LIBENDIAN_API_
+    #else
 /** Class decorator to handle dynamic linkage in windows */
-		#define LIBENDIAN_API_ __declspec(dllimport)
-	#endif
+        #define LIBENDIAN_API_ __declspec(dllimport)
+    #endif
 #else
 /** Class decorator to handle dynamic linkage in windows */
-	#define LIBENDIAN_API_
+    #define LIBENDIAN_API_
 #endif
 
 /** Set by build system. Define if a namespace should be used */
@@ -64,40 +64,40 @@
 LIBENDIAN_NAMESPACE_START
 
 // ─────────────────────────────────────────────────────────────
-//					CLASS
+//                  CLASS
 // ─────────────────────────────────────────────────────────────
 
 /** Define common variable size */
 class LIBENDIAN_API_ LibEndian
 {
-	// ────── SIZE ──────────────────────────────────────────────────────
+    // ────── SIZE ──────────────────────────────────────────────────────
 public:
-	/** Size of uint8_t variable (1 byte) */
-	static const uint8_t UINT8_SIZE = 1;
-	/** Size of uint16_t variable (2 bytes) */
-	static const uint8_t UINT16_SIZE = 2;
-	/** Size of uint32_t variable (4 bytes) */
-	static const uint8_t UINT32_SIZE = 4;
-	/** Size of uint48_t variable (6 bytes) */
-	static const uint8_t UINT48_SIZE = 6;
-	/** Size of uint64_t variable (8 bytes) */
-	static const uint8_t UINT64_SIZE = 8;
+    /** Size of uint8_t variable (1 byte) */
+    static const uint8_t UINT8_SIZE = 1;
+    /** Size of uint16_t variable (2 bytes) */
+    static const uint8_t UINT16_SIZE = 2;
+    /** Size of uint32_t variable (4 bytes) */
+    static const uint8_t UINT32_SIZE = 4;
+    /** Size of uint48_t variable (6 bytes) */
+    static const uint8_t UINT48_SIZE = 6;
+    /** Size of uint64_t variable (8 bytes) */
+    static const uint8_t UINT64_SIZE = 8;
 
-	/** Size of int8_t variable (1 byte) */
-	static const uint8_t INT8_SIZE = 1;
-	/** Size of int16_t variable (2 bytes) */
-	static const uint8_t INT16_SIZE = 2;
-	/** Size of int32_t variable (4 bytes) */
-	static const uint8_t INT32_SIZE = 4;
-	/** Size of int48_t variable (6 bytes) */
-	static const uint8_t INT48_SIZE = 6;
-	/** Size of int64_t variable (8 bytes) */
-	static const uint8_t INT64_SIZE = 8;
+    /** Size of int8_t variable (1 byte) */
+    static const uint8_t INT8_SIZE = 1;
+    /** Size of int16_t variable (2 bytes) */
+    static const uint8_t INT16_SIZE = 2;
+    /** Size of int32_t variable (4 bytes) */
+    static const uint8_t INT32_SIZE = 4;
+    /** Size of int48_t variable (6 bytes) */
+    static const uint8_t INT48_SIZE = 6;
+    /** Size of int64_t variable (8 bytes) */
+    static const uint8_t INT64_SIZE = 8;
 
-	/** Size of float variable (6 bytes) */
-	static const uint8_t FLOAT32_SIZE = 4;
-	/** Size of double variable (8 bytes) */
-	static const uint8_t FLOAT64_SIZE = 8;
+    /** Size of float variable (6 bytes) */
+    static const uint8_t FLOAT32_SIZE = 4;
+    /** Size of double variable (8 bytes) */
+    static const uint8_t FLOAT64_SIZE = 8;
 };
 
 /** Get the version of the library */
