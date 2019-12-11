@@ -46,6 +46,7 @@ SET( LIBENDIAN_BUILD_STATIC OFF CACHE BOOL "Build static lib for LibEndian" )
 ENDIF(NOT LIBENDIAN_BUILD_SHARED)
 SET( LIBENDIAN_USE_NAMESPACE ON CACHE BOOL "If the library compile with a namespace.")
 SET( LIBENDIAN_NAMESPACE "Endn" CACHE STRING "Namespace for the library. Only relevant if LIBENDIAN_USE_NAMESPACE is ON")
+set( LIBENDIAN_FOLDER_PREFIX ${LIBENDIAN_TARGET} CACHE STRING "Prefix folder for all Kratos generated targets in generated project (only decorative)" )
 SET( LIBENDIAN_BUILD_DOC OFF CACHE BOOL "Build LibEndian Doc with Doxygen" )
 SET( LIBENDIAN_DOXYGEN_BT_REPOSITORY "https://github.com/OlivierLDff/DoxygenBootstrappedCMake.git" CACHE STRING "Repository of DoxygenBt" )
 SET( LIBENDIAN_DOXYGEN_BT_TAG v1.3.2 CACHE STRING "Git Tag of DoxygenBt" )
@@ -154,6 +155,10 @@ IF(LIBENDIAN_USE_NAMESPACE)
 TARGET_COMPILE_DEFINITIONS( ${LIBENDIAN_TARGET} PUBLIC -DLIBENDIAN_USE_NAMESPACE )
 TARGET_COMPILE_DEFINITIONS( ${LIBENDIAN_TARGET} PUBLIC -DLIBENDIAN_NAMESPACE=${LIBENDIAN_NAMESPACE} )
 ENDIF(LIBENDIAN_USE_NAMESPACE)
+
+if(LIBENDIAN_FOLDER_PREFIX)
+    set_target_properties(${LIBENDIAN_TARGET} PROPERTIES FOLDER ${LIBENDIAN_FOLDER_PREFIX})
+endif() # LIBENDIAN_FOLDER_PREFIX
 
 # ┌──────────────────────────────────────────────────────────────────┐
 # │						  DOXYGEN 									 │
