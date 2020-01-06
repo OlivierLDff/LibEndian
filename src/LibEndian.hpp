@@ -72,6 +72,7 @@ class LIBENDIAN_API_ LibEndian
 {
     // ────── SIZE ──────────────────────────────────────────────────────
 public:
+    virtual ~LibEndian() = default;
     /** Size of uint8_t variable (1 byte) */
     static const uint8_t UINT8_SIZE = 1;
     /** Size of uint16_t variable (2 bytes) */
