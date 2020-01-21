@@ -12,6 +12,8 @@
 // C Header
 
 // C++ Header
+#include <cstdint>
+#include <cstddef>
 
 // Dependencies Header
 
