@@ -9,16 +9,13 @@
 //                  INCLUDE
 // ─────────────────────────────────────────────────────────────
 
-// C Header
+// Application Header
+#include <LibEndian.hpp>
 
 // C++ Header
 #include <cstdint>
 #include <cstddef>
-
-// Dependencies Header
-
-// Application Header
-#include <LibEndian.hpp>
+#include <cstring>
 
 // ─────────────────────────────────────────────────────────────
 //                  DECLARATION
@@ -51,6 +48,15 @@ public:
      */
     static uint16_t GET_UINT16(const uint8_t* buf)
     {
+        #ifdef LIBENDIAN_ENABLE_BSWAP
+          #ifdef LIBENDIAN_IS_BIG_ENDIAN
+            if(IS_16_ALIGNED(uintptr_t(buf)))
+                return bswap_16(uint16_t(*buf));
+          #else
+            if(IS_16_ALIGNED(uintptr_t(buf)))
+                return uint16_t(*(const uint16_t*)(buf));
+          #endif
+        #endif
         return ((uint16_t)buf[1] << 8) |
                ((uint16_t)buf[0]);
     }
@@ -62,6 +68,15 @@ public:
      */
     static uint32_t GET_UINT32(const uint8_t* buf)
     {
+        #ifdef LIBENDIAN_ENABLE_BSWAP
+          #ifdef LIBENDIAN_IS_BIG_ENDIAN
+            if(IS_32_ALIGNED(uintptr_t(buf)))
+                return bswap_32(uint32_t(*buf));
+          #else
+        if (IS_32_ALIGNED(uintptr_t(buf)))
+            return uint32_t(*(const uint32_t*)(buf));
+          #endif
+        #endif
         return ((uint32_t)buf[3] << 24) |
                ((uint32_t)buf[2] << 16) |
                ((uint32_t)buf[1] << 8)  |
@@ -76,6 +91,15 @@ public:
      */
     static uint64_t GET_UINT48(const uint8_t* buf)
     {
+        #ifdef LIBENDIAN_ENABLE_BSWAP
+          #ifdef LIBENDIAN_IS_BIG_ENDIAN
+            if(IS_64_ALIGNED(uintptr_t(buf)))
+                return bswap_64(uint64_t(*buf)) & uint64_t(0xFFFFFFFFFFFF);
+          #else
+            if(IS_64_ALIGNED(uintptr_t(buf)))
+                return uint64_t(*(const uint64_t*)(buf)) & uint64_t(0xFFFFFFFFFFFF);
+          #endif
+        #endif
         return ((uint64_t)buf[5] << 40) |
                ((uint64_t)buf[4] << 32) |
                ((uint64_t)buf[3] << 24) |
@@ -91,6 +115,15 @@ public:
      */
     static uint64_t GET_UINT64(const uint8_t* buf)
     {
+        #ifdef LIBENDIAN_ENABLE_BSWAP
+          #ifdef LIBENDIAN_IS_BIG_ENDIAN
+            if(IS_64_ALIGNED(uintptr_t(buf)))
+                return bswap_64(uint64_t(*buf));
+          #else
+            if(IS_64_ALIGNED(uintptr_t(buf)))
+                return uint64_t(*(const uint64_t*)(buf));
+          #endif
+        #endif
         return ((uint64_t)buf[7] << 56) |
                ((uint64_t)buf[6] << 48) |
                ((uint64_t)buf[5] << 40) |
@@ -603,6 +636,63 @@ public:
     static void SET_FLOAT64(uint8_t* buf, const size_t offset, const double val, int& length) { SET_FLOAT64(buf, offset, val); length += UINT64_SIZE; }
 
     /**
+     * memcpy from a little endian 16 bits to a local buffer
+     * \param dest ptr to local uint16_t buffer, that contains uint16_t
+     * \param src ptr to little endian buffer of uint16_t that need to be deserialized in dest
+     * \param count Number of uint16_t in src
+     */
+    static void MEMCPY_16(uint8_t* dest, const uint8_t* src, const size_t count)
+    {
+        #ifdef LIBENDIAN_IS_BIG_ENDIAN
+        if(IS_16_ALIGNED(src))
+        {
+            for (int i = 0; i < count; i += 2)
+                *reinterpret_cast<uint16_t*>(&dest[i]) = GET_UINT16(src, i);
+            return;
+        }
+        #endif
+        memcpy(dest, src, count * 2);
+    }
+
+    /**
+     * memcpy from a little endian 32 bits to a local buffer
+     * \param dest ptr to local uint32_t buffer, that contains uint32_t
+     * \param src ptr to little endian buffer of uint32_t that need to be deserialized in dest
+     * \param count Number of uint32_t in src
+     */
+    static void MEMCPY_32(uint8_t* dest, const uint8_t* src, const size_t count)
+    {
+        #ifdef LIBENDIAN_IS_BIG_ENDIAN
+        if(IS_32_ALIGNED(src))
+        {
+            for (int i = 0; i < count; i += 4)
+                *reinterpret_cast<uint32_t*>(&dest[i]) = GET_UINT32(src, i);
+            return;
+        }
+        #endif
+        memcpy(dest, src, count * 4);
+    }
+
+    /**
+     * memcpy from a little endian 64 bits to a local buffer
+     * \param dest ptr to local uint64_t buffer, that contains uint64_t
+     * \param src ptr to little endian buffer of uint64_t that need to be deserialized in dest
+     * \param count Number of uint64_t in src
+     */
+    static void MEMCPY_64(uint8_t* dest, const uint8_t* src, const size_t count)
+    {
+        #ifdef LIBENDIAN_IS_BIG_ENDIAN
+        if(IS_64_ALIGNED(src))
+        {
+            for (int i = 0; i < count; i += 8)
+                *reinterpret_cast<uint64_t*>(&dest[i]) = GET_UINT64(src, i);
+            return;
+        }
+        #endif
+        memcpy(dest, src, count * 8);
+    }
+
+    /**
      * Deserialize an uint8_t from buffer
      * \param buf Pointer to the uint8_t
      * \return The deserialized data
@@ -1107,6 +1197,39 @@ public:
      * \param val Value to serialize
      */
     static void SET_FLOAT64(char* buf, const size_t offset, const double val, int& length) { SET_FLOAT64(buf, offset, val); length += UINT64_SIZE; }
+
+    /**
+     * memcpy from a little endian 16 bits to a local buffer
+     * \param dest ptr to local uint16_t buffer, that contains uint16_t
+     * \param src ptr to little endian buffer of uint16_t that need to be deserialized in dest
+     * \param count Number of uint16_t in src
+     */
+    static void MEMCPY_16(char* dest, const char* src, const size_t count)
+    {
+        MEMCPY_16((uint8_t*)dest, (const uint8_t*)src, count);
+    }
+
+    /**
+     * memcpy from a little endian 32 bits to a local buffer
+     * \param dest ptr to local uint32_t buffer, that contains uint32_t
+     * \param src ptr to little endian buffer of uint32_t that need to be deserialized in dest
+     * \param count Number of uint32_t in src
+     */
+    static void MEMCPY_32(char* dest, const char* src, const size_t count)
+    {
+        MEMCPY_32((uint8_t*)dest, (const uint8_t*)src, count);
+    }
+
+    /**
+     * memcpy from a little endian 64 bits to a local buffer
+     * \param dest ptr to local uint64_t buffer, that contains uint64_t
+     * \param src ptr to little endian buffer of uint64_t that need to be deserialized in dest
+     * \param count Number of uint64_t in src
+     */
+    static void MEMCPY_64(char* dest, const char* src, const size_t count)
+    {
+        MEMCPY_64((uint8_t*)dest, (const uint8_t*)src, count);
+    }
 
 };
 

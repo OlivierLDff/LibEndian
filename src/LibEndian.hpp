@@ -99,6 +99,14 @@ public:
     static const uint8_t FLOAT32_SIZE = 4;
     /** Size of double variable (8 bytes) */
     static const uint8_t FLOAT64_SIZE = 8;
+
+    static bool IS_16_ALIGNED(const uintptr_t ptr) { return ptr % 2 == 0; }
+    static bool IS_32_ALIGNED(const uintptr_t ptr) { return ptr % 4 == 0; }
+    static bool IS_64_ALIGNED(const uintptr_t ptr) { return ptr % 8 == 0; }
+
+    static bool IS_16_ALIGNED(const uint8_t* ptr) { return IS_16_ALIGNED(uintptr_t(ptr)); }
+    static bool IS_32_ALIGNED(const uint8_t* ptr) { return IS_32_ALIGNED(uintptr_t(ptr)); }
+    static bool IS_64_ALIGNED(const uint8_t* ptr) { return IS_64_ALIGNED(uintptr_t(ptr)); }
 };
 
 /** Get the version of the library */
