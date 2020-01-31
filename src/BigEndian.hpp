@@ -328,6 +328,21 @@ public:
      */
     static void SET_UINT16(uint8_t* buf, const uint16_t val)
     {
+        #ifdef LIBENDIAN_ENABLE_BSWAP
+          #ifdef LIBENDIAN_IS_BIG_ENDIAN
+            if(IS_16_ALIGNED(uintptr_t(buf)))
+            {
+                (*(uint16_t*)buf) = val;
+                return;
+            }
+          #else
+            if(IS_16_ALIGNED(uintptr_t(buf)))
+            {
+                (*(uint16_t*)buf) = bswap_16(val);
+                return;
+            }
+          #endif
+        #endif
         buf[0] = (uint8_t)((val >> 8) & 0xFF);
         buf[1] = (uint8_t)(val & 0xFF);
     }
@@ -339,6 +354,21 @@ public:
      */
     static void SET_UINT32(uint8_t* buf, const uint32_t val)
     {
+        #ifdef LIBENDIAN_ENABLE_BSWAP
+          #ifdef LIBENDIAN_IS_BIG_ENDIAN
+            if(IS_32_ALIGNED(uintptr_t(buf)))
+            {
+                (*(uint32_t*)buf) = val;
+                return;
+            }
+          #else
+            if(IS_32_ALIGNED(uintptr_t(buf)))
+            {
+                (*(uint32_t*)buf) = bswap_32(val);
+                return;
+            }
+          #endif
+        #endif
         buf[0] = (uint8_t)((val >> 24) & 0xFF);
         buf[1] = (uint8_t)((val >> 16) & 0xFF);
         buf[2] = (uint8_t)((val >> 8) & 0xFF);
@@ -353,6 +383,21 @@ public:
      */
     static void SET_UINT48(uint8_t* buf, const uint64_t val)
     {
+        #ifdef LIBENDIAN_ENABLE_BSWAP
+          #ifdef LIBENDIAN_IS_BIG_ENDIAN
+            if(IS_64_ALIGNED(uintptr_t(buf)))
+            {
+                (*(uint64_t*)buf) = val & uint64_t(0xFFFFFFFFFFFF);
+                return;
+            }
+          #else
+            if(IS_64_ALIGNED(uintptr_t(buf)))
+            {
+                (*(uint64_t*)buf) = bswap_64(val) & uint64_t(0xFFFFFFFFFFFF);
+                return;
+            }
+          #endif
+        #endif
         buf[0] = (uint8_t)((val >> 40) & 0xFF);
         buf[1] = (uint8_t)((val >> 32) & 0xFF);
         buf[2] = (uint8_t)((val >> 24) & 0xFF);
@@ -368,6 +413,21 @@ public:
      */
     static void SET_UINT64(uint8_t* buf, const uint64_t val)
     {
+        #ifdef LIBENDIAN_ENABLE_BSWAP
+          #ifdef LIBENDIAN_IS_BIG_ENDIAN
+            if(IS_64_ALIGNED(uintptr_t(buf)))
+            {
+                (*(uint64_t*)buf) = val;
+                return;
+            }
+          #else
+            if(IS_64_ALIGNED(uintptr_t(buf)))
+            {
+                (*(uint64_t*)buf) = bswap_64(val);
+                return;
+            }
+          #endif
+        #endif
         buf[0] = (uint8_t)((val >> 56) & 0xFF);
         buf[1] = (uint8_t)((val >> 48) & 0xFF);
         buf[2] = (uint8_t)((val >> 40) & 0xFF);
