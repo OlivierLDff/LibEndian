@@ -86,7 +86,7 @@ public:
 
     /**
      * Deserialize an uint48_t from buffer.
-     * \note It is return on a uint64_t for conveniance
+     * \note It is return on a uint64_t for convenience
      * \param buf Pointer to the uint48_t
      * \return The deserialized data
      */
@@ -170,7 +170,7 @@ public:
 
     /**
      * Deserialize an int48_t from buffer.
-     * \note It is return on a int64_t for conveniance
+     * \note It is return on a int64_t for convenience
      * \param buf Pointer to the uint48_t
      * \return The deserialized data
      */
@@ -241,7 +241,7 @@ public:
      * Deserialize an uint48_t from buffer
      * \param buf Pointer to the buffer
      * \param offset Offset in the buffer to access to an uint48_t* (in bytes)
-     * \note Store in a uint64_t for conveniance
+     * \note Store in a uint64_t for convenience
      * \return The deserialized data
      */
     static uint64_t GET_UINT48(const uint8_t* buf, const size_t offset) { return GET_UINT48(&buf[offset]); }
@@ -282,7 +282,7 @@ public:
      * Deserialize an int48_t from buffer
      * \param buf Pointer to the buffer
      * \param offset Offset in the buffer to access to an int48_t* (in bytes)
-     * \note Store in a int64_t for conveniance
+     * \note Store in a int64_t for convenience
      * \return The deserialized data
      */
     static int64_t GET_INT48(const uint8_t* buf, const size_t offset) { return GET_INT48(&buf[offset]); }
@@ -349,7 +349,7 @@ public:
      * Serialize a uint48_t in the buffer
      * \param buf Pointer to the buffer
      * \param val Value to serialize
-     * \note For conveniance the uint48 is stored into a uint64_t
+     * \note For convenience the uint48 is stored into a uint64_t
      */
     static void SET_UINT48(uint8_t* buf, const uint64_t val)
     {
@@ -404,7 +404,7 @@ public:
      * Serialize a int48 in the buffer
      * \param buf Pointer to the buffer
      * \param val Value to serialize
-     * \note For conveniance the int48 is stored into a int64_t
+     * \note For convenience the int48 is stored into a int64_t
      */
     static void SET_INT48(uint8_t* buf, const int64_t val) { SET_UINT48(buf, *(const uint64_t*)&val); }
 
@@ -458,7 +458,7 @@ public:
      * \param buf Pointer to the buffer
      * \param offset Offset in the buffer (in bytes)
      * \param val Value to serialize
-     * \note For conveniance the uint48 is stored into a uint64_t
+     * \note For convenience the uint48 is stored into a uint64_t
      */
     static void SET_UINT48(uint8_t* buf, const size_t offset, const uint64_t val) { SET_UINT48(&buf[offset], val); }
 
@@ -499,7 +499,7 @@ public:
      * \param buf Pointer to the buffer
      * \param offset Offset in the buffer (in bytes)
      * \param val Value to serialize
-     * \note For conveniance the int48 is stored into a int64_t
+     * \note For convenience the int48 is stored into a int64_t
      */
     static void SET_INT48(uint8_t* buf, const size_t offset, const int64_t val) { SET_INT48(&buf[offset], val); }
 
@@ -559,7 +559,7 @@ public:
      * \param buf Pointer to the buffer
      * \param offset Offset in the buffer (in bytes)
      * \param length Auto Increment this variable by the size of uint48_t
-     * \note For conveniance the uint48 is stored into a uint64_t
+     * \note For convenience the uint48 is stored into a uint64_t
      * \param val Value to serialize
      */
     static void SET_UINT48(uint8_t* buf, const size_t offset, const uint64_t val, int& length) { SET_UINT48(buf, offset, val); length += UINT48_SIZE; }
@@ -605,7 +605,7 @@ public:
      * \param buf Pointer to the buffer
      * \param offset Offset in the buffer (in bytes)
      * \param length Auto Increment this variable by the size of int48_t
-     * \note For conveniance the int48 is stored into a int64_t
+     * \note For convenience the int48 is stored into a int64_t
      * \param val Value to serialize
      */
     static void SET_INT48(uint8_t* buf, const size_t offset, const int64_t val, int& length) { SET_INT48(buf, offset, val); length += INT48_SIZE; }
@@ -717,7 +717,7 @@ public:
 
     /**
      * Deserialize an uint48_t from buffer.
-     * \note It is return on a uint64_t for conveniance
+     * \note It is return on a uint64_t for convenience
      * \param buf Pointer to the uint48_t
      * \return The deserialized data
      */
@@ -765,7 +765,7 @@ public:
 
     /**
      * Deserialize an int48_t from buffer.
-     * \note It is return on a int64_t for conveniance
+     * \note It is return on a int64_t for convenience
      * \param buf Pointer to the uint48_t
      * \return The deserialized data
      */
@@ -836,7 +836,7 @@ public:
      * Deserialize an uint48_t from buffer
      * \param buf Pointer to the buffer
      * \param offset Offset in the buffer to access to an uint48_t* (in bytes)
-     * \note Store in a uint64_t for conveniance
+     * \note Store in a uint64_t for convenience
      * \return The deserialized data
      */
     static uint64_t GET_UINT48(const char* buf, const size_t offset) { return GET_UINT48(&buf[offset]); }
@@ -877,7 +877,7 @@ public:
      * Deserialize an int48_t from buffer
      * \param buf Pointer to the buffer
      * \param offset Offset in the buffer to access to an int48_t* (in bytes)
-     * \note Store in a int64_t for conveniance
+     * \note Store in a int64_t for convenience
      * \return The deserialized data
      */
     static int64_t GET_INT48(const char* buf, const size_t offset) { return GET_INT48(&buf[offset]); }
@@ -931,7 +931,7 @@ public:
      * Serialize a uint48_t in the buffer
      * \param buf Pointer to the buffer
      * \param val Value to serialize
-     * \note For conveniance the uint48 is stored into a uint64_t
+     * \note For convenience the uint48 is stored into a uint64_t
      */
     static void SET_UINT48(char* buf, const uint64_t val) { SET_UINT48((uint8_t*)buf, *(const uint64_t*)&val); }
 
@@ -967,7 +967,7 @@ public:
      * Serialize a int48 in the buffer
      * \param buf Pointer to the buffer
      * \param val Value to serialize
-     * \note For conveniance the int48 is stored into a int64_t
+     * \note For convenience the int48 is stored into a int64_t
      */
     static void SET_INT48(char* buf, const int64_t val) { SET_UINT48(buf, *(const uint64_t*)&val); }
 
@@ -1021,7 +1021,7 @@ public:
      * \param buf Pointer to the buffer
      * \param offset Offset in the buffer (in bytes)
      * \param val Value to serialize
-     * \note For conveniance the uint48 is stored into a uint64_t
+     * \note For convenience the uint48 is stored into a uint64_t
      */
     static void SET_UINT48(char* buf, const size_t offset, const uint64_t val) { SET_UINT48(&buf[offset], val); }
 
@@ -1062,7 +1062,7 @@ public:
      * \param buf Pointer to the buffer
      * \param offset Offset in the buffer (in bytes)
      * \param val Value to serialize
-     * \note For conveniance the int48 is stored into a int64_t
+     * \note For convenience the int48 is stored into a int64_t
      */
     static void SET_INT48(char* buf, const size_t offset, const int64_t val) { SET_INT48(&buf[offset], val); }
 
@@ -1122,7 +1122,7 @@ public:
      * \param buf Pointer to the buffer
      * \param offset Offset in the buffer (in bytes)
      * \param length Auto Increment this variable by the size of uint48_t
-     * \note For conveniance the uint48 is stored into a uint64_t
+     * \note For convenience the uint48 is stored into a uint64_t
      * \param val Value to serialize
      */
     static void SET_UINT48(char* buf, const size_t offset, const uint64_t val, int& length) { SET_UINT48(buf, offset, val); length += UINT48_SIZE; }
@@ -1168,7 +1168,7 @@ public:
      * \param buf Pointer to the buffer
      * \param offset Offset in the buffer (in bytes)
      * \param length Auto Increment this variable by the size of int48_t
-     * \note For conveniance the int48 is stored into a int64_t
+     * \note For convenience the int48 is stored into a int64_t
      * \param val Value to serialize
      */
     static void SET_INT48(char* buf, const size_t offset, const int64_t val, int& length) { SET_INT48(buf, offset, val); length += INT48_SIZE; }
