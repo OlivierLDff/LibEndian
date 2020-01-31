@@ -134,8 +134,10 @@ if(LIBENDIAN_BUILD_SHARED)
     target_compile_definitions( ${LIBENDIAN_TARGET} PRIVATE -DLIBENDIAN_SHARED )
 
 else()
+
     add_library( ${LIBENDIAN_TARGET} STATIC ${LIBENDIAN_SRCS} )
     target_compile_definitions( ${LIBENDIAN_TARGET} PUBLIC -DLIBENDIAN_STATIC )
+
 endif()
 
 target_include_directories( ${LIBENDIAN_TARGET} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src )
@@ -148,11 +150,6 @@ target_compile_definitions( ${LIBENDIAN_TARGET} PRIVATE -DLIBENDIAN_VERSION_TAG_
 if(LIBENDIAN_ENABLE_BSWAP)
     include (TestBigEndian)
     test_big_endian(IS_BIG_ENDIAN)
-    if(IS_BIG_ENDIAN)
-        message(STATUS "Your system is big endian")
-    else()
-        message(STATUS "Your system is little endian")
-    endif()
     target_compile_definitions( ${LIBENDIAN_TARGET} PUBLIC -DLIBENDIAN_ENABLE_BSWAP )
     if(IS_BIG_ENDIAN)
         target_compile_definitions( ${LIBENDIAN_TARGET} PUBLIC -DLIBENDIAN_IS_BIG_ENDIAN )
