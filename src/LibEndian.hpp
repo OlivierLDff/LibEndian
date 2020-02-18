@@ -107,6 +107,12 @@ public:
     static bool IS_16_ALIGNED(const uint8_t* ptr) { return IS_16_ALIGNED(uintptr_t(ptr)); }
     static bool IS_32_ALIGNED(const uint8_t* ptr) { return IS_32_ALIGNED(uintptr_t(ptr)); }
     static bool IS_64_ALIGNED(const uint8_t* ptr) { return IS_64_ALIGNED(uintptr_t(ptr)); }
+
+    static bool OVERLAP(const uintptr_t ptr1, const uintptr_t ptr2, const size_t count)
+    {
+        return (ptr1 <= ptr2 && ptr1 + count > ptr2) ||
+               (ptr2 <= ptr1 && ptr2 + count > ptr1);
+    }
 };
 
 /** Get the version of the library */
