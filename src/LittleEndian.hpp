@@ -711,7 +711,8 @@ public:
             return;
         }
         #endif
-        memcpy(dest, src, count * 2);
+        if(dest != src)
+            memcpy(dest, src, count * 2);
     }
 
     /**
@@ -730,7 +731,8 @@ public:
             return;
         }
         #endif
-        memcpy(dest, src, count * 4);
+        if (dest != src)
+            memcpy(dest, src, count * 4);
     }
 
     /**
@@ -749,7 +751,8 @@ public:
             return;
         }
         #endif
-        memcpy(dest, src, count * 8);
+        if (dest != src)
+            memcpy(dest, src, count * 8);
     }
 
     /**
